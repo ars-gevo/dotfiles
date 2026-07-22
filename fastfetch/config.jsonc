@@ -1,42 +1,35 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "color": { "1": "34", "2": "34" },
-    	"type": "auto",
-    	"height": 18,
-    	"padding": { "top": 1, "left": 2 }
+        "color": { "1": "97", "2": "97" },
+    	"type": "small",
+    	"padding": { "top": 4, "left": 4 }
     },
     "display": {
         "separator": " ",
-        "color": { "keys": "34", "output": "37" },
-        "key": { "width": 11 }
+        "color": { "keys": "97", "output": "37" }
     },
     "modules": [
 	"break",
-	{ "type": "title", "format": "{#34}{user-name}{#37}@{#34}{host-name}" },
-        "break",
+	{ "type": "title", "format": "{#97}{user-name}{#37}@{#97}{host-name}" },
         "os",
         "kernel",
+        { "type": "host", "format": "{2}" },
         "packages",
-        { "type": "localip", "key": "Local IP" },
         "shell",
         "terminal",
         "wm",
-        { "type": "host", "key": "Laptop", "format": "{2}" },
-        { "type": "display", "key": "Display" },
-        { "type": "cpu", "format": "{1}" },
+        { "type": "display", "key": "Display", "format": "{1}x{2} in {12}\", {3} Hz" },
+        { "type": "cpu", "format": "i3-1115G4" },
         { "type": "gpu", "format": "{2}" },
-        "memory",
-        "swap",
-        { "type": "disk", "key": "Disk" },
-        { "type": "battery", "key": "Battery" },
+        { "type": "disk", "key": "Disk", "format": "{1} / {2}" },
         "uptime",
         {
             "type": "command",
             "key": "Age",
-            "keyColor": "34",
+            "keyColor": "97",
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
-        "break"
+	"break"
     ]
 }

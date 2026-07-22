@@ -7,10 +7,15 @@ set $term foot
 
 font pango: JetBrains Mono Nerd Font 12
 output * bg ~/.config/sway/mountain.jpg fill
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 8
+client.focused    #ffffff #ffffff #000000 #ffffff #ffffff
+client.unfocused  #b0b0b0 #b0b0b0 #888888 #b0b0b0 #b0b0b0
 
    exec swayidle -w \
-          timeout 600 'swaylock -f -c 000000' \
-          timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 2100 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -c 000000'
 
    input type:touchpad {
@@ -28,8 +33,10 @@ output * bg ~/.config/sway/mountain.jpg fill
     bindsym --to-code $mod+q exec $term
     bindsym --to-code $mod+c kill
     bindsym --to-code $mod+Shift+c reload
-    bindsym --to-code $mod+Shift+e exit
+    bindsym --to-code $mod+Shift+e exit 
     bindsym --to-code $mod+Shift+f exec firefox
+    bindsym --to-code $mod+Shift+v exec throne
+    bindsym --to-code $mod+Shift+s exec steam
 
     floating_modifier $mod normal
 
@@ -113,7 +120,10 @@ mode "resize" {
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
-    bindsym Print exec grim
+    bindsym $mod+Print exec grim
+    bindsym Print exec grim - | wl-copy
+    bindsym $mod+Shift+Print exec grim -g "$(slurp)"
+    bindsym Shift+Print exec grim -g "$(slurp)" - | wl-copy
 
 bar {
     position top
@@ -121,8 +131,10 @@ bar {
     status_command ~/.config/sway/status.sh
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #000000
+        focused_workspace  #ffffff #000000 #ffffff 
+        inactive_workspace #000000 #000000 #ffffff
+        urgent_workspace   #FF0000 #FF0000 #ffffff
     }
 }
 
