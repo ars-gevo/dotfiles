@@ -10,7 +10,6 @@
         "color": { "keys": "97", "output": "37" }
     },
     "modules": [
-	"break",
 	{ "type": "title", "format": "{#97}{user-name}{#37}@{#97}{host-name}" },
         "os",
         "kernel",
